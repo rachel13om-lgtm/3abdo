@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title></title></title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background: #3498db; /* خلفية زرقاء */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            width: 300px;
+            text-align: center;
+        }
+        .login-box img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+        .login-box h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            background: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-box button:hover {
+            background: #357ae8;
+        }
+        .forgot {
+            margin-top: 15px;
+        }
+        .forgot a {
+            font-size: 13px;
+            color: #4285F4;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .forgot a:hover {
+            text-decoration: underline;
+        }
+        /* نافذة منبثقة */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            width: 300px;
+            text-align: center;
+        }
+        .popup input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        .popup button {
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .popup button:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <!-- شعار فيسبوك -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook Logo">
+        
+        <h2>تسجيل الدخول</h2>
+        <form onsubmit="openGoogleLikePage(event)">
+            <input type="email" placeholder="enter the e-mail" required>
+            <input type="password" placeholder="enter the password" required>
+            <button type="submit">login in</button>
+        </form>
+        <!-- رابط هل نسيت كلمة المرور -->
+        <div class="forgot">
+            <a onclick="showPopup()">do you forget your password?</a>
+        </div>
+    </div>
+
+    <!-- النافذة المنبثقة -->
+    <div class="popup" id="popup">
+        <h3></h3>reset the password</h3>
+        <p></p>enter your e-mail</p>
+        <input type="email" placeholder="your e-mail" required>
+        <button onclick="closePopup()">send</button>
+    </div>
+
+    <script>
+        function openGoogleLikePage(event) {
+            event.preventDefault();
+            let newWindow = window.open("", "_blank", "width=600,height=400");
+            newWindow.document.write(`
+                <html>
+                <head>
+                    <title>browser</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            background: #f1f1f1;
+                            margin: 0;
+                            padding: 20px;
+                        }
+                        h1 {
+                            color: #4285F4;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h1>welcome!</h1>
+                    <p>hi.</p>
+                </body>
+                </html>
+            `);
+        }
+
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
+
+        function closePopup() {
+            alert("the code was sent");
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+</body>
+</html>
